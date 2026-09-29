@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1f4fa3">
+<title>Horario UBA 2026-2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: agenda académica — encabezado, pendientes, línea de tiempo de clases por semana, ventanas de evaluación */
+:root{
+  --bg:#f5f6f8; --surface:#ffffff; --fg:#17202b; --muted:#5d6878; --line:#dde2e9; --accent:#1f4fa3;
+  --c-eco:#2e7d4f; --c-fin:#b0461f; --c-inv:#7a3fa0; --c-ins:#1f6fa8; --c-log:#9a6a00; --c-intro:#5d6878;
+  --warn:#b3261e; --warn-bg:#fdecea; --ok-bg:#e8f1ff;
+  --f-display:"Fraunces",Georgia,serif; --f-body:"Public Sans",system-ui,sans-serif; --f-mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12161c; --surface:#1a2029; --fg:#e7ebf1; --muted:#9aa5b5; --line:#2b3440; --accent:#7fa8f0;
+  --c-eco:#5fc28a; --c-fin:#f08a5d; --c-inv:#c08ae6; --c-ins:#6db6ec; --c-log:#e3b341; --c-intro:#9aa5b5;
+  --warn:#ff8a80; --warn-bg:#3a1c1a; --ok-bg:#1c2a42; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12161c; --surface:#1a2029; --fg:#e7ebf1; --muted:#9aa5b5; --line:#2b3440; --accent:#7fa8f0;
+  --c-eco:#5fc28a; --c-fin:#f08a5d; --c-inv:#c08ae6; --c-ins:#6db6ec; --c-log:#e3b341; --c-intro:#9aa5b5;
+  --warn:#ff8a80; --warn-bg:#3a1c1a; --ok-bg:#1c2a42; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.5}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:16px;padding-block:28px 56px;display:grid;gap:36px}
+header h1{font-family:var(--f-display);font-size:clamp(28px,5vw,40px);margin:0;text-wrap:balance;line-height:1.1}
+header p{margin:6px 0 0;color:var(--muted)}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h2{font-family:var(--f-display);font-size:24px;margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 16px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:14px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13px}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--c);flex:none}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.tabs button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--fg);padding:6px 12px;border-radius:999px;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.pend{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.pcard{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:4px;border-top:3px solid var(--c)}
+.pcard .t{font-weight:600}
+.pcard .m{color:var(--muted);font-size:13px}
+.badge{font-family:var(--f-mono);font-size:11.5px;padding:2px 8px;border-radius:999px;justify-self:start}
+.b-hot{background:var(--warn-bg);color:var(--warn)}
+.b-soon{background:var(--ok-bg);color:var(--accent)}
+.b-past{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.week{display:grid;grid-template-columns:110px 1fr;gap:14px;padding-block:12px;border-top:1px solid var(--line)}
+.week.now{background:linear-gradient(90deg,var(--ok-bg),transparent 70%);border-radius:8px;padding-inline:8px}
+.wk{font-family:var(--f-mono);font-size:12.5px;color:var(--muted)}
+.wk b{display:block;color:var(--fg);font-family:var(--f-body);font-size:14px}
+.items{display:grid;gap:8px;min-width:0}
+.cls{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:8px;padding:9px 12px}
+.cls.past{opacity:.55}
+.cls .when{font-family:var(--f-mono);font-size:13px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.cls .what{min-width:0}
+.cls .what b{font-weight:600}
+.cls .what span{display:block;color:var(--muted);font-size:13px}
+.empty{color:var(--muted);font-size:13px;font-style:italic}
+.gantt-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+table.g{border-collapse:collapse;width:100%;min-width:760px;font-size:13px}
+.g th,.g td{border-bottom:1px solid var(--line);padding:10px;vertical-align:top;text-align:left}
+.g th{font-weight:600;background:var(--bg);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.g th.now{color:var(--accent)}
+.g td.course{font-weight:600;white-space:nowrap}
+.ev{border-left:3px solid var(--c);padding:2px 0 2px 8px;display:grid;gap:2px}
+.ev + .ev{margin-top:8px}
+.ev .n{font-weight:600}
+.ev .d{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.ev .alt{font-size:12px;color:var(--muted)}
+.notes{display:grid;gap:8px;color:var(--muted);font-size:13.5px;max-width:70ch}
+.notes li{margin:0}
+@media (max-width:560px){.week{grid-template-columns:1fr;gap:6px}.cls{grid-template-columns:1fr;gap:2px}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">UBA · Pregrado · Trimestre 2026-2</div>
+  <h1>Horario de clases y evaluaciones</h1>
+  <p>Levantado del campus virtual el 29/09/2026. Todas las horas son de Venezuela.</p>
+  <p style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px"><a href="uba-2026-2.ics" style="background:var(--accent);color:var(--bg);padding:8px 14px;border-radius:999px;text-decoration:none;font-weight:600">Agregar alarmas a mi calendario (.ics)</a><a href="https://pregrado.campusvirtualuba.net.ve/trimestre/my/" target="_blank" rel="noopener" style="border:1px solid var(--line);color:var(--fg);padding:8px 14px;border-radius:999px;text-decoration:none">Abrir campus UBA</a></p>
+  <div class="legend" id="legend"></div>
+</header>
+
+<section>
+  <h2>Pendientes ahora</h2>
+  <p class="sub">Aún no hay entregas realizadas en ninguna actividad.</p>
+  <div class="pend" id="pend"></div>
+</section>
+
+<section>
+  <h2>Línea de tiempo de clases en vivo</h2>
+  <p class="sub">Semana a semana, según las unidades de cada materia.</p>
+  <div class="tabs" id="tabs"></div>
+  <div id="timeline"></div>
+</section>
+
+<section>
+  <h2>Calendario de evaluaciones</h2>
+  <p class="sub">Cuatro ventanas de entrega de 25% cada una. Abren a las 00:01 y cierran a las 23:59.</p>
+  <div class="gantt-wrap"><table class="g" id="gantt"></table></div>
+</section>
+
+<section>
+  <h2>Notas</h2>
+  <ul class="notes">
+    <li>Finanzas II: las fechas salen del Plan de Evaluación (Dr. Yuly Agreda, Sección A/S2). Las clases no tienen hora publicada y las tareas aún no están creadas en la plataforma.</li>
+    <li>Investigación de Mercados solo tiene publicadas las clases hasta el 26/09. Las próximas se anunciarán en el Foro de anuncios (11 mensajes sin leer).</li>
+    <li>Instituciones Financieras e Investigación de Mercados muestran tareas de más de una sección. Aparece primero la de tu sección y la otra como alternativa.</li>
+    <li>Remediales: solicitud desde el 30/11/2026. Recepción de notas: 07/12 al 14/12/2026.</li>
+  </ul>
+</section>
+</div>
+
+<script>
+const C={
+ eco:{n:"Ecología y Desarrollo Productivo",p:"Ing. Dorys Torrealba",v:"--c-eco"},
+ fin:{n:"Finanzas II",p:"Dr. Yuly Agreda",v:"--c-fin"},
+ inv:{n:"Investigación de Mercados",p:"Dra. María Luisa Trujillo",v:"--c-inv"},
+ ins:{n:"Instituciones Financieras",p:"Dr. Jesús Arocha",v:"--c-ins"},
+ log:{n:"Lógica Matemática",p:"Msc. Liban Haleguey",v:"--c-log"},
+ intro:{n:"Curso Introductorio",p:"UBA",v:"--c-intro"}
+};
+// Clases: [curso, fecha ISO, hora "HH:MM" o null, título, plataforma]
+const CL=[
+ ["fin","2026-09-15",null,"Clase en vivo 1 · Unidad I","Hora por confirmar"],
+ ["eco","2026-09-16","17:00","Clase en vivo 1","Enlace en el aula"],
+ ["ins","2026-09-16","19:00","Clase en vivo 1","Zoom"],
+ ["log","2026-09-17","09:30","Clase en vivo 1 · Proposiciones e inferencias","Zoom"],
+ ["inv","2026-09-19","10:00","1ª clase en vivo · Bienvenida y plan","BigBlueButton"],
+ ["inv","2026-09-21","10:00","1ª clase en vivo (otra sección)","BigBlueButton"],
+ ["inv","2026-09-26","10:00","2ª clase en vivo","BigBlueButton"],
+ ["ins","2026-09-28","19:00","Clase en vivo 2","Zoom"],
+ ["eco","2026-09-30","17:00","Clase en vivo 2","Enlace en el aula"],
+ ["log","2026-10-01","09:30","Clase en vivo 2","Zoom"],
+ ["ins","2026-10-12","19:00","Clase en vivo 3","Zoom"],
+ ["eco","2026-10-14","17:00","Clase en vivo 3","Enlace en el aula"],
+ ["log","2026-10-15","09:30","Clase en vivo 3","Zoom"],
+ ["fin","2026-10-19",null,"Clase en vivo 2 · Estados financieros e inflación","Hora por confirmar"],
+ ["ins","2026-10-26","19:00","Clase en vivo 4","Zoom"],
+ ["eco","2026-10-28","17:00","Clase en vivo 4","Enlace en el aula"],
+ ["log","2026-10-29","09:30","Clase en vivo 4","Zoom"],
+ ["fin","2026-11-02",null,"Clase en vivo 3 · Capital de trabajo","Hora por confirmar"],
+ ["fin","2026-11-16",null,"Clase en vivo 4 · Flujo de efectivo","Hora por confirmar"]
+];
+// Evaluaciones por ventana
+const EV=[
+ {w:"Ventana 1",from:"2026-10-05",to:"2026-10-11",items:[
+  ["eco","S1 · Informe técnico diagnóstico","05/10","09/10"],
+  ["fin","S1 · Video + ejercicios (estados financieros)","05/10","11/10"],
+  ["inv","S1 · Informe interpretativo","05/10","10/10"],
+  ["ins","S1 · Ensayo","05/10","10/10"],
+  ["log","S1 · Resolución de ejercicios","05/10","09/10"]]},
+ {w:"Ventana 2",from:"2026-10-19",to:"2026-10-25",items:[
+  ["eco","S2 · Infografía digital argumentada","19/10","23/10"],
+  ["fin","S2 · Video + ejercicios (inflación)","19/10","25/10"],
+  ["inv","S2 · Análisis C.A.M.E.","19/10","24/10","Otra sección: Notas Cornell (Lcdo. Diego Rodríguez), cierra 23/10"],
+  ["ins","S2 · Estudio de caso","19/10","24/10"],
+  ["log","S2 · Ejercicios prácticos","19/10","23/10"]]},
+ {w:"Ventana 3",from:"2026-11-02",to:"2026-11-08",items:[
+  ["eco","S3 · Plan de gestión ambiental","02/11","06/11"],
+  ["fin","S3 · Video + ejercicios (capital de trabajo)","02/11","08/11"],
+  ["inv","S3 · Creación de un blog (Blogger)","02/11","07/11"],
+  ["ins","S3 · Cuadro comparativo","02/11","07/11","Sección A: Exposición (Prof. María Daniela Carrillo)"],
+  ["log","S3 · Resolución de ejercicios","02/11","06/11"]]},
+ {w:"Ventana 4",from:"2026-11-16",to:"2026-11-22",items:[
+  ["eco","S4 · Póster académico digital","16/11","20/11"],
+  ["fin","S4 · Video + ejercicios (flujo de efectivo)","16/11","22/11"],
+  ["inv","S4 · Revista digital","16/11","21/11"],
+  ["ins","S4 · Análisis argumentativo","16/11","21/11","Sección A: Organizadores gráficos (Prof. Carrillo)"],
+  ["log","S4 · Ejercicios prácticos","16/11","20/11"]]}
+];
+const col=k=>`var(${C[k].v})`;
+const D=s=>new Date(s+"T00:00:00-04:00");
+const now=new Date();
+const today=D(new Intl.DateTimeFormat("en-CA",{timeZone:"America/Caracas"}).format(now));
+const dayMs=864e5;
+const fmt=d=>d.toLocaleDateString("es-VE",{weekday:"short",day:"2-digit",month:"short",timeZone:"America/Caracas"});
+const h12=t=>{if(!t)return"--:--";let[h,m]=t.split(":").map(Number);const s=h>=12?"pm":"am";h=h%12||12;return`${h}:${String(m).padStart(2,"0")} ${s}`};
+
+// Leyenda
+document.getElementById("legend").innerHTML=Object.entries(C).filter(([k])=>k!=="intro").map(([k,c])=>`<span class="chip" style="--c:${col(k)}"><span class="dot"></span>${c.n}</span>`).join("");
+
+// Pendientes
+const days=d=>Math.round((d-today)/dayMs);
+const badge=n=>n<0?`<span class="badge b-past">pasada</span>`:n===0?`<span class="badge b-hot">hoy</span>`:n<=3?`<span class="badge b-hot">en ${n} día${n>1?"s":""}</span>`:`<span class="badge b-soon">en ${n} días</span>`;
+const nextCls=CL.filter(c=>D(c[1])>=today).slice(0,3);
+const pend=[
+ ...nextCls.map(c=>({k:c[0],t:`${c[3]}`,m:`${C[c[0]].n} · ${fmt(D(c[1]))} · ${c[2]?h12(c[2]):"hora por confirmar"}`,n:days(D(c[1]))})),
+ {k:"intro",t:"Actividad: Actualización del perfil (foto)",m:"Curso Introductorio · sin entregar · cierra mié 14/10, 11:59 pm",n:days(D("2026-10-14"))},
+ {k:"eco",t:"Primera ventana de evaluaciones: 5 entregas",m:"Todas las materias · abre lun 05/10, 12:01 am",n:days(D("2026-10-05"))}
+];
+document.getElementById("pend").innerHTML=pend.map(p=>`<div class="pcard" style="--c:${col(p.k)}">${badge(p.n)}<div class="t">${p.t}</div><div class="m">${p.m}</div></div>`).join("");
+
+// Línea de tiempo
+let filter="all";
+const monday=d=>{const x=new Date(d);const wd=(x.getUTCDay()+6)%7;return new Date(x-wd*dayMs)};
+function renderTL(){
+  const list=CL.filter(c=>filter==="all"||c[0]===filter);
+  const weeks=new Map();
+  list.forEach(c=>{const m=monday(D(c[1])).getTime();if(!weeks.has(m))weeks.set(m,[]);weeks.get(m).push(c)});
+  const start=monday(D("2026-09-14")).getTime(),end=monday(D("2026-11-16")).getTime();
+  let html="",n=1;
+  for(let w=start;w<=end;w+=7*dayMs,n++){
+    const items=weeks.get(w)||[];
+    const isNow=today>=w&&today<w+7*dayMs;
+    const endW=new Date(w+6*dayMs);
+    const evw=EV.find(e=>D(e.from).getTime()===w);
+    html+=`<div class="week${isNow?" now":""}"><div class="wk"><b>Semana ${n}${isNow?" · actual":""}</b>${fmt(new Date(w)).replace(/\.$/,"")} – ${fmt(endW)}</div><div class="items">`;
+    if(evw)html+=`<div class="empty" style="font-style:normal;color:var(--warn);font-weight:600">${evw.w} de evaluaciones abierta esta semana</div>`;
+    html+=items.length?items.map(c=>{const past=D(c[1])<today;return`<div class="cls${past?" past":""}" style="--c:${col(c[0])}"><div class="when">${fmt(D(c[1]))} · ${h12(c[2])}</div><div class="what"><b>${C[c[0]].n}</b><span>${c[3]} · ${C[c[0]].p} · ${c[4]}</span></div>${badge(days(D(c[1])))}</div>`}).join(""):(evw?"":`<div class="empty">Sin clases en vivo publicadas</div>`);
+    html+=`</div></div>`;
+  }
+  document.getElementById("timeline").innerHTML=html;
+}
+const tabs=document.getElementById("tabs");
+tabs.innerHTML=[["all","Todas"],...Object.entries(C).filter(([k])=>k!=="intro").map(([k,c])=>[k,c.n])].map(([k,l])=>`<button type="button" data-k="${k}" aria-pressed="${k==="all"}">${l}</button>`).join("");
+tabs.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;filter=b.dataset.k;tabs.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));renderTL()});
+renderTL();
+
+// Calendario de evaluaciones
+const g=document.getElementById("gantt");
+const isNowW=e=>today>=D(e.from)&&today<=D(e.to);
+let th=`<tr><th>Materia</th>${EV.map(e=>`<th class="${isNowW(e)?"now":""}">${e.w}<br>${e.from.slice(8)}/${e.from.slice(5,7)} – ${e.to.slice(8)}/${e.to.slice(5,7)}</th>`).join("")}</tr>`;
+const rows=["eco","fin","inv","ins","log"].map(k=>`<tr><td class="course" style="--c:${col(k)}"><span class="chip"><span class="dot"></span>${C[k].n}</span></td>${EV.map(e=>{const it=e.items.filter(i=>i[0]===k);return`<td>${it.map(i=>`<div class="ev" style="--c:${col(k)}"><span class="n">${i[1]}</span><span class="d">Abre ${i[2]} 12:01 am · Cierra ${i[3]} 11:59 pm</span>${i[4]?`<span class="alt">${i[4]}</span>`:""}</div>`).join("")}</td>`}).join("")}</tr>`).join("");
+g.innerHTML=`<thead>${th}</thead><tbody>${rows}</tbody>`;
+</script>
+
+</body>
+</html>

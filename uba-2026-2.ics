@@ -1,0 +1,638 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//UBA Horario 2026-2//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:UBA Trimestre 2026-2
+X-WR-TIMEZONE:America/Caracas
+BEGIN:VTIMEZONE
+TZID:America/Caracas
+BEGIN:STANDARD
+DTSTART:19700101T000000
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0400
+TZNAME:-04
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:uba-2026-2-0@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20260930T170000
+DTEND;TZID=America/Caracas:20260930T183000
+SUMMARY:🎓 Ecología y Desarrollo Productivo: Clase en vivo 2
+DESCRIPTION:Ing. Dorys Torrealba · Enlace en el aula virtual. Enlace en el campus: https://pregrado.campusvirtualuba.net.ve/trimestre/my/
+LOCATION:Enlace en el aula virtual
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎓 Ecología y Desarrollo Productivo: Clase en vivo 2
+TRIGGER:-PT1440M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎓 Ecología y Desarrollo Productivo: Clase en vivo 2
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-1@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261001T093000
+DTEND;TZID=America/Caracas:20261001T110000
+SUMMARY:🎓 Lógica Matemática: Clase en vivo 2
+DESCRIPTION:Msc. Liban Haleguey · Zoom (enlace en el aula). Enlace en el campus: https://pregrado.campusvirtualuba.net.ve/trimestre/my/
+LOCATION:Zoom (enlace en el aula)
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎓 Lógica Matemática: Clase en vivo 2
+TRIGGER:-PT1440M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎓 Lógica Matemática: Clase en vivo 2
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-2@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261012T190000
+DTEND;TZID=America/Caracas:20261012T203000
+SUMMARY:🎓 Instituciones Financieras: Clase en vivo 3
+DESCRIPTION:Dr. Jesús Arocha · Zoom (enlace en el aula). Enlace en el campus: https://pregrado.campusvirtualuba.net.ve/trimestre/my/
+LOCATION:Zoom (enlace en el aula)
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎓 Instituciones Financieras: Clase en vivo 3
+TRIGGER:-PT1440M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎓 Instituciones Financieras: Clase en vivo 3
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-3@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261014T170000
+DTEND;TZID=America/Caracas:20261014T183000
+SUMMARY:🎓 Ecología y Desarrollo Productivo: Clase en vivo 3
+DESCRIPTION:Ing. Dorys Torrealba · Enlace en el aula virtual. Enlace en el campus: https://pregrado.campusvirtualuba.net.ve/trimestre/my/
+LOCATION:Enlace en el aula virtual
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎓 Ecología y Desarrollo Productivo: Clase en vivo 3
+TRIGGER:-PT1440M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎓 Ecología y Desarrollo Productivo: Clase en vivo 3
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-4@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261015T093000
+DTEND;TZID=America/Caracas:20261015T110000
+SUMMARY:🎓 Lógica Matemática: Clase en vivo 3
+DESCRIPTION:Msc. Liban Haleguey · Zoom (enlace en el aula). Enlace en el campus: https://pregrado.campusvirtualuba.net.ve/trimestre/my/
+LOCATION:Zoom (enlace en el aula)
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎓 Lógica Matemática: Clase en vivo 3
+TRIGGER:-PT1440M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎓 Lógica Matemática: Clase en vivo 3
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-5@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;VALUE=DATE:20261019
+DTEND;VALUE=DATE:20261020
+SUMMARY:🎓 Finanzas II: Clase en vivo 2 · Estados financieros e inflación (hora por confirmar)
+DESCRIPTION:Dr. Yuly Agreda. La hora no está publicada en el Plan de Evaluación\; revisa el Foro de anuncios.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎓 Finanzas II: Clase en vivo 2 · Estados financieros e inflación (hora por confirmar)
+TRIGGER:-PT360M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-6@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261026T190000
+DTEND;TZID=America/Caracas:20261026T203000
+SUMMARY:🎓 Instituciones Financieras: Clase en vivo 4
+DESCRIPTION:Dr. Jesús Arocha · Zoom (enlace en el aula). Enlace en el campus: https://pregrado.campusvirtualuba.net.ve/trimestre/my/
+LOCATION:Zoom (enlace en el aula)
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎓 Instituciones Financieras: Clase en vivo 4
+TRIGGER:-PT1440M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎓 Instituciones Financieras: Clase en vivo 4
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-7@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261028T170000
+DTEND;TZID=America/Caracas:20261028T183000
+SUMMARY:🎓 Ecología y Desarrollo Productivo: Clase en vivo 4
+DESCRIPTION:Ing. Dorys Torrealba · Enlace en el aula virtual. Enlace en el campus: https://pregrado.campusvirtualuba.net.ve/trimestre/my/
+LOCATION:Enlace en el aula virtual
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎓 Ecología y Desarrollo Productivo: Clase en vivo 4
+TRIGGER:-PT1440M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎓 Ecología y Desarrollo Productivo: Clase en vivo 4
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-8@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261029T093000
+DTEND;TZID=America/Caracas:20261029T110000
+SUMMARY:🎓 Lógica Matemática: Clase en vivo 4
+DESCRIPTION:Msc. Liban Haleguey · Zoom (enlace en el aula). Enlace en el campus: https://pregrado.campusvirtualuba.net.ve/trimestre/my/
+LOCATION:Zoom (enlace en el aula)
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎓 Lógica Matemática: Clase en vivo 4
+TRIGGER:-PT1440M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎓 Lógica Matemática: Clase en vivo 4
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-9@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;VALUE=DATE:20261102
+DTEND;VALUE=DATE:20261103
+SUMMARY:🎓 Finanzas II: Clase en vivo 3 · Capital de trabajo (hora por confirmar)
+DESCRIPTION:Dr. Yuly Agreda. La hora no está publicada en el Plan de Evaluación\; revisa el Foro de anuncios.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎓 Finanzas II: Clase en vivo 3 · Capital de trabajo (hora por confirmar)
+TRIGGER:-PT360M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-10@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;VALUE=DATE:20261116
+DTEND;VALUE=DATE:20261117
+SUMMARY:🎓 Finanzas II: Clase en vivo 4 · Flujo de efectivo (hora por confirmar)
+DESCRIPTION:Dr. Yuly Agreda. La hora no está publicada en el Plan de Evaluación\; revisa el Foro de anuncios.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🎓 Finanzas II: Clase en vivo 4 · Flujo de efectivo (hora por confirmar)
+TRIGGER:-PT360M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-11@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261009T230000
+DTEND;TZID=America/Caracas:20261009T235900
+SUMMARY:⏰ CIERRA Ecología y Desarrollo Productivo: S1 Informe técnico diagnóstico
+DESCRIPTION:Ing. Dorys Torrealba · 25% · Abre 05/10 12:01 am\, cierra 09/10 11:59 pm (hora de Venezuela).
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Ecología y Desarrollo Productivo: S1 Informe técnico diagnóstico
+TRIGGER:-PT2880M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Ecología y Desarrollo Productivo: S1 Informe técnico diagnóstico
+TRIGGER:-PT1440M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-12@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261011T230000
+DTEND;TZID=America/Caracas:20261011T235900
+SUMMARY:⏰ CIERRA Finanzas II: S1 Video + ejercicios
+DESCRIPTION:Dr. Yuly Agreda · 25% · Abre 05/10 12:01 am\, cierra 11/10 11:59 pm (hora de Venezuela).
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Finanzas II: S1 Video + ejercicios
+TRIGGER:-PT2880M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Finanzas II: S1 Video + ejercicios
+TRIGGER:-PT1440M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-13@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261010T230000
+DTEND;TZID=America/Caracas:20261010T235900
+SUMMARY:⏰ CIERRA Investigación de Mercados: S1 Informe interpretativo
+DESCRIPTION:Dra. María Luisa Trujillo · 25% · Abre 05/10 12:01 am\, cierra 10/10 11:59 pm (hora de Venezuela).
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Investigación de Mercados: S1 Informe interpretativo
+TRIGGER:-PT2880M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Investigación de Mercados: S1 Informe interpretativo
+TRIGGER:-PT1440M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-14@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261010T230000
+DTEND;TZID=America/Caracas:20261010T235900
+SUMMARY:⏰ CIERRA Instituciones Financieras: S1 Ensayo
+DESCRIPTION:Dr. Jesús Arocha · 25% · Abre 05/10 12:01 am\, cierra 10/10 11:59 pm (hora de Venezuela).
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Instituciones Financieras: S1 Ensayo
+TRIGGER:-PT2880M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Instituciones Financieras: S1 Ensayo
+TRIGGER:-PT1440M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-15@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261009T230000
+DTEND;TZID=America/Caracas:20261009T235900
+SUMMARY:⏰ CIERRA Lógica Matemática: S1 Resolución de ejercicios
+DESCRIPTION:Msc. Liban Haleguey · 25% · Abre 05/10 12:01 am\, cierra 09/10 11:59 pm (hora de Venezuela).
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Lógica Matemática: S1 Resolución de ejercicios
+TRIGGER:-PT2880M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Lógica Matemática: S1 Resolución de ejercicios
+TRIGGER:-PT1440M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-16@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261023T230000
+DTEND;TZID=America/Caracas:20261023T235900
+SUMMARY:⏰ CIERRA Ecología y Desarrollo Productivo: S2 Infografía digital argumentada
+DESCRIPTION:Ing. Dorys Torrealba · 25% · Abre 19/10 12:01 am\, cierra 23/10 11:59 pm (hora de Venezuela).
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Ecología y Desarrollo Productivo: S2 Infografía digital argumentada
+TRIGGER:-PT2880M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Ecología y Desarrollo Productivo: S2 Infografía digital argumentada
+TRIGGER:-PT1440M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-17@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261025T230000
+DTEND;TZID=America/Caracas:20261025T235900
+SUMMARY:⏰ CIERRA Finanzas II: S2 Video + ejercicios
+DESCRIPTION:Dr. Yuly Agreda · 25% · Abre 19/10 12:01 am\, cierra 25/10 11:59 pm (hora de Venezuela).
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Finanzas II: S2 Video + ejercicios
+TRIGGER:-PT2880M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Finanzas II: S2 Video + ejercicios
+TRIGGER:-PT1440M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-18@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261024T230000
+DTEND;TZID=America/Caracas:20261024T235900
+SUMMARY:⏰ CIERRA Investigación de Mercados: S2 Análisis C.A.M.E.
+DESCRIPTION:Dra. María Luisa Trujillo · 25% · Abre 19/10 12:01 am\, cierra 24/10 11:59 pm (hora de Venezuela).
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Investigación de Mercados: S2 Análisis C.A.M.E.
+TRIGGER:-PT2880M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Investigación de Mercados: S2 Análisis C.A.M.E.
+TRIGGER:-PT1440M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-19@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261024T230000
+DTEND;TZID=America/Caracas:20261024T235900
+SUMMARY:⏰ CIERRA Instituciones Financieras: S2 Estudio de caso
+DESCRIPTION:Dr. Jesús Arocha · 25% · Abre 19/10 12:01 am\, cierra 24/10 11:59 pm (hora de Venezuela).
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Instituciones Financieras: S2 Estudio de caso
+TRIGGER:-PT2880M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Instituciones Financieras: S2 Estudio de caso
+TRIGGER:-PT1440M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-20@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261023T230000
+DTEND;TZID=America/Caracas:20261023T235900
+SUMMARY:⏰ CIERRA Lógica Matemática: S2 Ejercicios prácticos
+DESCRIPTION:Msc. Liban Haleguey · 25% · Abre 19/10 12:01 am\, cierra 23/10 11:59 pm (hora de Venezuela).
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Lógica Matemática: S2 Ejercicios prácticos
+TRIGGER:-PT2880M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Lógica Matemática: S2 Ejercicios prácticos
+TRIGGER:-PT1440M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-21@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261106T230000
+DTEND;TZID=America/Caracas:20261106T235900
+SUMMARY:⏰ CIERRA Ecología y Desarrollo Productivo: S3 Plan de gestión ambiental
+DESCRIPTION:Ing. Dorys Torrealba · 25% · Abre 02/11 12:01 am\, cierra 06/11 11:59 pm (hora de Venezuela).
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Ecología y Desarrollo Productivo: S3 Plan de gestión ambiental
+TRIGGER:-PT2880M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Ecología y Desarrollo Productivo: S3 Plan de gestión ambiental
+TRIGGER:-PT1440M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-22@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261108T230000
+DTEND;TZID=America/Caracas:20261108T235900
+SUMMARY:⏰ CIERRA Finanzas II: S3 Video + ejercicios
+DESCRIPTION:Dr. Yuly Agreda · 25% · Abre 02/11 12:01 am\, cierra 08/11 11:59 pm (hora de Venezuela).
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Finanzas II: S3 Video + ejercicios
+TRIGGER:-PT2880M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Finanzas II: S3 Video + ejercicios
+TRIGGER:-PT1440M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-23@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261107T230000
+DTEND;TZID=America/Caracas:20261107T235900
+SUMMARY:⏰ CIERRA Investigación de Mercados: S3 Creación de un blog
+DESCRIPTION:Dra. María Luisa Trujillo · 25% · Abre 02/11 12:01 am\, cierra 07/11 11:59 pm (hora de Venezuela).
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Investigación de Mercados: S3 Creación de un blog
+TRIGGER:-PT2880M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Investigación de Mercados: S3 Creación de un blog
+TRIGGER:-PT1440M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-24@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261107T230000
+DTEND;TZID=America/Caracas:20261107T235900
+SUMMARY:⏰ CIERRA Instituciones Financieras: S3 Cuadro comparativo
+DESCRIPTION:Dr. Jesús Arocha · 25% · Abre 02/11 12:01 am\, cierra 07/11 11:59 pm (hora de Venezuela).
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Instituciones Financieras: S3 Cuadro comparativo
+TRIGGER:-PT2880M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Instituciones Financieras: S3 Cuadro comparativo
+TRIGGER:-PT1440M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-25@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261106T230000
+DTEND;TZID=America/Caracas:20261106T235900
+SUMMARY:⏰ CIERRA Lógica Matemática: S3 Resolución de ejercicios
+DESCRIPTION:Msc. Liban Haleguey · 25% · Abre 02/11 12:01 am\, cierra 06/11 11:59 pm (hora de Venezuela).
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Lógica Matemática: S3 Resolución de ejercicios
+TRIGGER:-PT2880M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Lógica Matemática: S3 Resolución de ejercicios
+TRIGGER:-PT1440M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-26@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261120T230000
+DTEND;TZID=America/Caracas:20261120T235900
+SUMMARY:⏰ CIERRA Ecología y Desarrollo Productivo: S4 Póster académico digital
+DESCRIPTION:Ing. Dorys Torrealba · 25% · Abre 16/11 12:01 am\, cierra 20/11 11:59 pm (hora de Venezuela).
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Ecología y Desarrollo Productivo: S4 Póster académico digital
+TRIGGER:-PT2880M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Ecología y Desarrollo Productivo: S4 Póster académico digital
+TRIGGER:-PT1440M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-27@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261122T230000
+DTEND;TZID=America/Caracas:20261122T235900
+SUMMARY:⏰ CIERRA Finanzas II: S4 Video + ejercicios
+DESCRIPTION:Dr. Yuly Agreda · 25% · Abre 16/11 12:01 am\, cierra 22/11 11:59 pm (hora de Venezuela).
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Finanzas II: S4 Video + ejercicios
+TRIGGER:-PT2880M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Finanzas II: S4 Video + ejercicios
+TRIGGER:-PT1440M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-28@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261121T230000
+DTEND;TZID=America/Caracas:20261121T235900
+SUMMARY:⏰ CIERRA Investigación de Mercados: S4 Revista digital
+DESCRIPTION:Dra. María Luisa Trujillo · 25% · Abre 16/11 12:01 am\, cierra 21/11 11:59 pm (hora de Venezuela).
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Investigación de Mercados: S4 Revista digital
+TRIGGER:-PT2880M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Investigación de Mercados: S4 Revista digital
+TRIGGER:-PT1440M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-29@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261121T230000
+DTEND;TZID=America/Caracas:20261121T235900
+SUMMARY:⏰ CIERRA Instituciones Financieras: S4 Análisis argumentativo
+DESCRIPTION:Dr. Jesús Arocha · 25% · Abre 16/11 12:01 am\, cierra 21/11 11:59 pm (hora de Venezuela).
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Instituciones Financieras: S4 Análisis argumentativo
+TRIGGER:-PT2880M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Instituciones Financieras: S4 Análisis argumentativo
+TRIGGER:-PT1440M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-30@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261120T230000
+DTEND;TZID=America/Caracas:20261120T235900
+SUMMARY:⏰ CIERRA Lógica Matemática: S4 Ejercicios prácticos
+DESCRIPTION:Msc. Liban Haleguey · 25% · Abre 16/11 12:01 am\, cierra 20/11 11:59 pm (hora de Venezuela).
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Lógica Matemática: S4 Ejercicios prácticos
+TRIGGER:-PT2880M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Lógica Matemática: S4 Ejercicios prácticos
+TRIGGER:-PT1440M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-31@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261005T070000
+DTEND;TZID=America/Caracas:20261005T073000
+SUMMARY:📂 Abre ventana 1 de evaluaciones UBA
+DESCRIPTION:5 entregas de 25%:\nEcología y Desarrollo Productivo: S1 Informe técnico diagnóstico (cierra 09/10)\nFinanzas II: S1 Video + ejercicios (cierra 11/10)\nInvestigación de Mercados: S1 Informe interpretativo (cierra 10/10)\nInstituciones Financieras: S1 Ensayo (cierra 10/10)\nLógica Matemática: S1 Resolución de ejercicios (cierra 09/10)
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:📂 Abre ventana 1 de evaluaciones UBA
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-32@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261019T070000
+DTEND;TZID=America/Caracas:20261019T073000
+SUMMARY:📂 Abre ventana 2 de evaluaciones UBA
+DESCRIPTION:5 entregas de 25%:\nEcología y Desarrollo Productivo: S2 Infografía digital argumentada (cierra 23/10)\nFinanzas II: S2 Video + ejercicios (cierra 25/10)\nInvestigación de Mercados: S2 Análisis C.A.M.E. (cierra 24/10)\nInstituciones Financieras: S2 Estudio de caso (cierra 24/10)\nLógica Matemática: S2 Ejercicios prácticos (cierra 23/10)
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:📂 Abre ventana 2 de evaluaciones UBA
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-33@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261102T070000
+DTEND;TZID=America/Caracas:20261102T073000
+SUMMARY:📂 Abre ventana 3 de evaluaciones UBA
+DESCRIPTION:5 entregas de 25%:\nEcología y Desarrollo Productivo: S3 Plan de gestión ambiental (cierra 06/11)\nFinanzas II: S3 Video + ejercicios (cierra 08/11)\nInvestigación de Mercados: S3 Creación de un blog (cierra 07/11)\nInstituciones Financieras: S3 Cuadro comparativo (cierra 07/11)\nLógica Matemática: S3 Resolución de ejercicios (cierra 06/11)
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:📂 Abre ventana 3 de evaluaciones UBA
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-34@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261116T070000
+DTEND;TZID=America/Caracas:20261116T073000
+SUMMARY:📂 Abre ventana 4 de evaluaciones UBA
+DESCRIPTION:5 entregas de 25%:\nEcología y Desarrollo Productivo: S4 Póster académico digital (cierra 20/11)\nFinanzas II: S4 Video + ejercicios (cierra 22/11)\nInvestigación de Mercados: S4 Revista digital (cierra 21/11)\nInstituciones Financieras: S4 Análisis argumentativo (cierra 21/11)\nLógica Matemática: S4 Ejercicios prácticos (cierra 20/11)
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:📂 Abre ventana 4 de evaluaciones UBA
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:uba-2026-2-35@jesusvieira-collab.github.io
+DTSTAMP:20260929T120000Z
+DTSTART;TZID=America/Caracas:20261014T230000
+DTEND;TZID=America/Caracas:20261014T235900
+SUMMARY:⏰ CIERRA Curso Introductorio: Actualización del perfil (foto)
+DESCRIPTION:Sube tu foto de perfil en el campus. Cierra 14/10 11:59 pm.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Curso Introductorio: Actualización del perfil (foto)
+TRIGGER:-PT2880M
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏰ CIERRA Curso Introductorio: Actualización del perfil (foto)
+TRIGGER:-PT1440M
+END:VALARM
+END:VEVENT
+END:VCALENDAR
