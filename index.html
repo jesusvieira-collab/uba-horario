@@ -3,231 +3,313 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#1f4fa3">
+<meta name="theme-color" content="#0f2340">
 <title>Horario UBA 2026-2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
 <style>
-/* Layout: agenda académica — encabezado, pendientes, línea de tiempo de clases por semana, ventanas de evaluación */
+/* Layout: tablero ejecutivo — banda azul marino con KPIs, "lo próximo", materias, línea de tiempo por semanas y ventanas de evaluación */
 :root{
-  --bg:#f5f6f8; --surface:#ffffff; --fg:#17202b; --muted:#5d6878; --line:#dde2e9; --accent:#1f4fa3;
-  --c-eco:#2e7d4f; --c-fin:#b0461f; --c-inv:#7a3fa0; --c-ins:#1f6fa8; --c-log:#9a6a00; --c-intro:#5d6878;
-  --warn:#b3261e; --warn-bg:#fdecea; --ok-bg:#e8f1ff;
-  --f-display:"Fraunces",Georgia,serif; --f-body:"Public Sans",system-ui,sans-serif; --f-mono:"JetBrains Mono",ui-monospace,monospace;
+  --ink:#0f2340; --ink-2:#1b3a63; --gold:#b08d3c;
+  --bg:#f3f5f8; --surface:#ffffff; --fg:#15202e; --muted:#5f6b7a; --line:#e1e6ed; --soft:#eef2f7;
+  --on-ink:#ffffff; --on-ink-muted:#b9c6d8;
+  --c-eco:#2f7d57; --c-fin:#b5562a; --c-inv:#6d4aa8; --c-ins:#1f6aa5; --c-log:#a07a14;
+  --alert:#b3261e; --alert-bg:#fbeceb; --ok:#1f6aa5; --ok-bg:#e8f0f9;
+  --f-sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r:10px;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#12161c; --surface:#1a2029; --fg:#e7ebf1; --muted:#9aa5b5; --line:#2b3440; --accent:#7fa8f0;
-  --c-eco:#5fc28a; --c-fin:#f08a5d; --c-inv:#c08ae6; --c-ins:#6db6ec; --c-log:#e3b341; --c-intro:#9aa5b5;
-  --warn:#ff8a80; --warn-bg:#3a1c1a; --ok-bg:#1c2a42; color-scheme:dark}}
+  --ink:#0b1a30; --ink-2:#132a4a; --gold:#d2b16a;
+  --bg:#0e141c; --surface:#161e29; --fg:#e6ebf2; --muted:#98a4b5; --line:#263242; --soft:#1c2634;
+  --on-ink:#ffffff; --on-ink-muted:#9fb0c8;
+  --c-eco:#5cc08c; --c-fin:#ec8a5c; --c-inv:#a98ae0; --c-ins:#6aaee6; --c-log:#dcb34a;
+  --alert:#ff8a80; --alert-bg:#3a1d1c; --ok:#7fb4ec; --ok-bg:#18283d; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#12161c; --surface:#1a2029; --fg:#e7ebf1; --muted:#9aa5b5; --line:#2b3440; --accent:#7fa8f0;
-  --c-eco:#5fc28a; --c-fin:#f08a5d; --c-inv:#c08ae6; --c-ins:#6db6ec; --c-log:#e3b341; --c-intro:#9aa5b5;
-  --warn:#ff8a80; --warn-bg:#3a1c1a; --ok-bg:#1c2a42; color-scheme:dark}
+  --ink:#0b1a30; --ink-2:#132a4a; --gold:#d2b16a;
+  --bg:#0e141c; --surface:#161e29; --fg:#e6ebf2; --muted:#98a4b5; --line:#263242; --soft:#1c2634;
+  --on-ink:#ffffff; --on-ink-muted:#9fb0c8;
+  --c-eco:#5cc08c; --c-fin:#ec8a5c; --c-inv:#a98ae0; --c-ins:#6aaee6; --c-log:#dcb34a;
+  --alert:#ff8a80; --alert-bg:#3a1d1c; --ok:#7fb4ec; --ok-bg:#18283d; color-scheme:dark}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.5}
-.wrap{max-width:1040px;margin:0 auto;padding-inline:16px;padding-block:28px 56px;display:grid;gap:36px}
-header h1{font-family:var(--f-display);font-size:clamp(28px,5vw,40px);margin:0;text-wrap:balance;line-height:1.1}
-header p{margin:6px 0 0;color:var(--muted)}
-.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
-h2{font-family:var(--f-display);font-size:24px;margin:0 0 4px}
-.sub{color:var(--muted);margin:0 0 16px}
-.legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:14px}
-.chip{display:inline-flex;align-items:center;gap:6px;font-size:13px}
-.dot{width:10px;height:10px;border-radius:50%;background:var(--c);flex:none}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
-.tabs button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--fg);padding:6px 12px;border-radius:999px;cursor:pointer}
-.tabs button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.pend{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
-.pcard{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:4px;border-top:3px solid var(--c)}
-.pcard .t{font-weight:600}
-.pcard .m{color:var(--muted);font-size:13px}
-.badge{font-family:var(--f-mono);font-size:11.5px;padding:2px 8px;border-radius:999px;justify-self:start}
-.b-hot{background:var(--warn-bg);color:var(--warn)}
-.b-soon{background:var(--ok-bg);color:var(--accent)}
-.b-past{background:transparent;color:var(--muted);border:1px solid var(--line)}
-.week{display:grid;grid-template-columns:110px 1fr;gap:14px;padding-block:12px;border-top:1px solid var(--line)}
-.week.now{background:linear-gradient(90deg,var(--ok-bg),transparent 70%);border-radius:8px;padding-inline:8px}
-.wk{font-family:var(--f-mono);font-size:12.5px;color:var(--muted)}
-.wk b{display:block;color:var(--fg);font-family:var(--f-body);font-size:14px}
-.items{display:grid;gap:8px;min-width:0}
-.cls{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:8px;padding:9px 12px}
-.cls.past{opacity:.55}
-.cls .when{font-family:var(--f-mono);font-size:13px;white-space:nowrap;font-variant-numeric:tabular-nums}
-.cls .what{min-width:0}
-.cls .what b{font-weight:600}
-.cls .what span{display:block;color:var(--muted);font-size:13px}
-.empty{color:var(--muted);font-size:13px;font-style:italic}
-.gantt-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
-table.g{border-collapse:collapse;width:100%;min-width:760px;font-size:13px}
-.g th,.g td{border-bottom:1px solid var(--line);padding:10px;vertical-align:top;text-align:left}
-.g th{font-weight:600;background:var(--bg);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
-.g th.now{color:var(--accent)}
-.g td.course{font-weight:600;white-space:nowrap}
-.ev{border-left:3px solid var(--c);padding:2px 0 2px 8px;display:grid;gap:2px}
-.ev + .ev{margin-top:8px}
-.ev .n{font-weight:600}
-.ev .d{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
-.ev .alt{font-size:12px;color:var(--muted)}
-.notes{display:grid;gap:8px;color:var(--muted);font-size:13.5px;max-width:70ch}
-.notes li{margin:0}
-@media (max-width:560px){.week{grid-template-columns:1fr;gap:6px}.cls{grid-template-columns:1fr;gap:2px}}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-sans);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+
+.top{background:linear-gradient(180deg,var(--ink) 0%,var(--ink-2) 100%);color:var(--on-ink);padding-block:28px 88px}
+.brand{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.top h1{margin:6px 0 4px;font-size:clamp(24px,4.2vw,34px);font-weight:600;letter-spacing:-.01em;text-wrap:balance}
+.top p{margin:0;color:var(--on-ink-muted);font-size:14px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;border:1px solid rgba(255,255,255,.28);color:var(--on-ink)}
+.btn.primary{background:var(--gold);border-color:var(--gold);color:#1a1405}
+.btn:focus-visible,.seg button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+.kpis{margin-top:-64px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;box-shadow:0 6px 20px rgba(15,35,64,.08)}
+.kpi .l{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.kpi .v{font-size:30px;font-weight:600;line-height:1.1;margin-top:6px}
+.kpi .s{font-size:13px;color:var(--muted);margin-top:2px}
+
+main{display:grid;grid-template-columns:minmax(0,1fr);gap:30px;padding-block:28px 40px}
+main>section,.next>div,.q,.sub{min-width:0}
+.sec-h{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px;margin-bottom:14px}
+.sec-h h2{margin:0;font-size:19px;font-weight:600}
+.sec-h p{margin:2px 0 0;color:var(--muted);font-size:13.5px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+
+.next{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:18px 20px;border-left:4px solid var(--c)}
+.date-tile{width:64px;text-align:center;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.date-tile .m{background:var(--ink);color:var(--on-ink);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:3px 0;font-weight:600}
+.date-tile .d{font-size:26px;font-weight:600;padding:4px 0 2px}
+.date-tile .w{font-size:11px;color:var(--muted);padding-bottom:5px;text-transform:uppercase}
+.k{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.next .t{font-size:17px;font-weight:600;margin-top:2px}
+.m2{color:var(--muted);font-size:13.5px}
+.pill{font-family:var(--f-mono);font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;white-space:nowrap}
+.p-alert{background:var(--alert-bg);color:var(--alert)}
+.p-ok{background:var(--ok-bg);color:var(--ok)}
+.p-past{color:var(--muted);border:1px solid var(--line)}
+.queue{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+.q{padding:14px 16px;display:grid;gap:3px;border-top:3px solid var(--c)}
+.q .h{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.q .t{font-weight:600}
+
+.subjects{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.sub{padding:12px 14px;display:grid;gap:2px;border-top:3px solid var(--c);align-content:start}
+.sub b{font-size:14px;font-weight:600;line-height:1.3}
+.sub span{font-size:12.5px;color:var(--muted)}
+.sub .slot{font-family:var(--f-mono);font-size:12px;color:var(--fg);margin-top:4px}
+
+.seg{display:flex;gap:4px;flex-wrap:wrap;background:var(--soft);padding:4px;border-radius:9px;max-width:100%}
+.seg button{font:inherit;font-size:13px;font-weight:500;border:0;background:transparent;color:var(--muted);padding:7px 12px;border-radius:6px;cursor:pointer;min-height:34px}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--fg);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+
+.tl{overflow:hidden}
+.wk{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:14px 20px;border-top:1px solid var(--line)}
+.wk:first-child{border-top:0}
+.wk.now{background:var(--ok-bg)}
+.wk-l b{display:block;font-size:14px;font-weight:600}
+.wk-l span{font-size:12.5px;color:var(--muted)}
+.tag{margin-top:6px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--alert)}
+.tag.cur{color:var(--ok)}
+.rows{display:grid;gap:6px;min-width:0}
+.row{display:grid;grid-template-columns:172px 1fr auto;gap:14px;align-items:center;padding:9px 12px;border:1px solid var(--line);border-left:3px solid var(--c);border-radius:8px;background:var(--surface)}
+.row.past{opacity:.5}
+.row.ev{border-style:dashed;border-left-style:solid}
+.row .when{font-family:var(--f-mono);font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.row .what{min-width:0}
+.row .what b{font-weight:600;font-size:14px}
+.row .what span{display:block;font-size:12.5px;color:var(--muted)}
+.more{margin-top:10px;font:inherit;font-size:13px;font-weight:600;color:var(--ok);background:transparent;border:1px solid var(--line);border-radius:8px;padding:8px 14px;cursor:pointer;min-height:36px}
+.more:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.empty{font-size:13px;color:var(--muted);padding:6px 0}
+
+.windows{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.win{overflow:hidden;display:flex;flex-direction:column}
+.win-h{padding:12px 16px;background:var(--soft);border-bottom:1px solid var(--line);display:grid;gap:2px}
+.win.now .win-h{background:var(--ink);color:var(--on-ink)}
+.win-h b{font-size:14px;font-weight:600}
+.win-h span{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.win.now .win-h span{color:var(--on-ink-muted)}
+.win ul{list-style:none;margin:0;padding:6px 0;flex:1}
+.win li{padding:8px 12px;display:grid;gap:2px;border-left:3px solid var(--c);margin:6px 10px}
+.win li .s{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.win li .n{font-size:13.5px;font-weight:600;line-height:1.35}
+.win li .c{font-family:var(--f-mono);font-size:12px}
+.win li .a{font-size:12px;color:var(--muted)}
+.win .ft{padding:10px 16px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+
+.notes{padding:16px 20px;display:grid;gap:8px;font-size:13.5px;color:var(--muted)}
+.notes b{color:var(--fg);font-weight:600}
+footer{font-size:12px;color:var(--muted);padding-bottom:32px}
+
+@media (max-width:960px){
+  .subjects{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .windows{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:720px){
+  .wrap{padding-inline:16px}
+  .top{padding-block:22px 80px}
+  .actions{width:100%}.btn{flex:1;justify-content:center}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .kpi{padding:12px 14px}.kpi .v{font-size:24px}
+  .queue{grid-template-columns:1fr}
+  .subjects{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .next{grid-template-columns:auto 1fr;gap:14px;padding:16px}
+  .next .pill{grid-column:1/-1;justify-self:start}
+  .wk{grid-template-columns:1fr;gap:8px;padding:14px}
+  .row{grid-template-columns:1fr auto;gap:4px 10px}
+  .row .when{grid-column:1/-1;font-size:12.5px;color:var(--muted)}
+  .windows{grid-template-columns:1fr}
+  .seg{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;width:100%}
+  .seg::-webkit-scrollbar{display:none}
+  .seg button{white-space:nowrap}
+}
 </style>
 </head>
 <body>
 
-<div class="wrap">
-<header>
-  <div class="eyebrow">UBA · Pregrado · Trimestre 2026-2</div>
-  <h1>Horario de clases y evaluaciones</h1>
-  <p>Levantado del campus virtual el 29/09/2026. Todas las horas son de Venezuela.</p>
-  <p style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px"><a href="uba-2026-2.ics" style="background:var(--accent);color:var(--bg);padding:8px 14px;border-radius:999px;text-decoration:none;font-weight:600">Agregar alarmas a mi calendario (.ics)</a><a href="https://pregrado.campusvirtualuba.net.ve/trimestre/my/" target="_blank" rel="noopener" style="border:1px solid var(--line);color:var(--fg);padding:8px 14px;border-radius:999px;text-decoration:none">Abrir campus UBA</a></p>
-  <div class="legend" id="legend"></div>
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div>
+        <div class="eyebrow">UBA · Administración de Empresas · Trimestre 2026-2</div>
+        <h1>Horario de clases y evaluaciones</h1>
+        <p>Hora de Venezuela (UTC-4) · Datos del campus virtual al 29/09/2026</p>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="uba-2026-2.ics">Agregar alarmas al calendario</a>
+        <a class="btn" href="https://pregrado.campusvirtualuba.net.ve/trimestre/my/" target="_blank" rel="noopener">Abrir campus</a>
+      </div>
+    </div>
+  </div>
 </header>
 
-<section>
-  <h2>Pendientes ahora</h2>
-  <p class="sub">Aún no hay entregas realizadas en ninguna actividad.</p>
-  <div class="pend" id="pend"></div>
-</section>
+<div class="wrap">
+  <section class="kpis" id="kpis" aria-label="Resumen"></section>
 
-<section>
-  <h2>Línea de tiempo de clases en vivo</h2>
-  <p class="sub">Semana a semana, según las unidades de cada materia.</p>
-  <div class="tabs" id="tabs"></div>
-  <div id="timeline"></div>
-</section>
+  <main>
+    <section>
+      <div class="sec-h"><div><h2>Lo próximo</h2><p>El evento más cercano y los tres que siguen.</p></div></div>
+      <div id="next"></div>
+      <div class="queue" id="queue"></div>
+    </section>
 
-<section>
-  <h2>Calendario de evaluaciones</h2>
-  <p class="sub">Cuatro ventanas de entrega de 25% cada una. Abren a las 00:01 y cierran a las 23:59.</p>
-  <div class="gantt-wrap"><table class="g" id="gantt"></table></div>
-</section>
+    <section>
+      <div class="sec-h"><div><h2>Materias inscritas</h2><p>Profesor y horario habitual de clase en vivo.</p></div></div>
+      <div class="subjects" id="subjects"></div>
+    </section>
 
-<section>
-  <h2>Notas</h2>
-  <ul class="notes">
-    <li>Finanzas II: las fechas salen del Plan de Evaluación (Dr. Yuly Agreda, Sección A/S2). Las clases no tienen hora publicada y las tareas aún no están creadas en la plataforma.</li>
-    <li>Investigación de Mercados solo tiene publicadas las clases hasta el 26/09. Las próximas se anunciarán en el Foro de anuncios (11 mensajes sin leer).</li>
-    <li>Instituciones Financieras e Investigación de Mercados muestran tareas de más de una sección. Aparece primero la de tu sección y la otra como alternativa.</li>
-    <li>Remediales: solicitud desde el 30/11/2026. Recepción de notas: 07/12 al 14/12/2026.</li>
-  </ul>
-</section>
+    <section>
+      <div class="sec-h">
+        <div><h2>Línea de tiempo</h2><p>Clases en vivo y cierres de evaluación, semana a semana.</p></div>
+        <div class="seg" id="seg" role="group" aria-label="Filtrar por materia"></div>
+      </div>
+      <div class="card tl" id="timeline"></div>
+      <button type="button" class="more" id="more"></button>
+    </section>
+
+    <section>
+      <div class="sec-h"><div><h2>Calendario de evaluaciones</h2><p>Cuatro ventanas con cinco entregas de 25% cada una. Abren a las 12:01 am y cierran a las 11:59 pm.</p></div></div>
+      <div class="windows" id="windows"></div>
+    </section>
+
+    <section class="card notes">
+      <div><b>Finanzas II.</b> Fechas tomadas del Plan de Evaluación del Dr. Yuly Agreda. Las clases no tienen hora publicada y las tareas aún no están creadas en el aula.</div>
+      <div><b>Investigación de Mercados.</b> Solo hay clases publicadas hasta el 26/09. Las siguientes se anunciarán en el Foro de anuncios.</div>
+      <div><b>Secciones.</b> Instituciones Financieras e Investigación de Mercados muestran tareas de otra sección; se indican como alternativa bajo cada entrega.</div>
+      <div><b>Cierre del lapso.</b> Solicitud de remediales desde el 30/11/2026. Recepción de notas del 07/12 al 14/12/2026.</div>
+    </section>
+  </main>
+
+  <footer>Verifica siempre las fechas en el aula de cada materia.</footer>
 </div>
 
 <script>
 const C={
- eco:{n:"Ecología y Desarrollo Productivo",p:"Ing. Dorys Torrealba",v:"--c-eco"},
- fin:{n:"Finanzas II",p:"Dr. Yuly Agreda",v:"--c-fin"},
- inv:{n:"Investigación de Mercados",p:"Dra. María Luisa Trujillo",v:"--c-inv"},
- ins:{n:"Instituciones Financieras",p:"Dr. Jesús Arocha",v:"--c-ins"},
- log:{n:"Lógica Matemática",p:"Msc. Liban Haleguey",v:"--c-log"},
- intro:{n:"Curso Introductorio",p:"UBA",v:"--c-intro"}
+ eco:{n:"Ecología y Desarrollo Productivo",s:"Ecología",p:"Ing. Dorys Torrealba",v:"--c-eco",slot:"Mié · 5:00 pm · quincenal"},
+ fin:{n:"Finanzas II",s:"Finanzas II",p:"Dr. Yuly Agreda",v:"--c-fin",slot:"Lun · hora por confirmar"},
+ inv:{n:"Investigación de Mercados",s:"Inv. de Mercados",p:"Dra. María Luisa Trujillo",v:"--c-inv",slot:"10:00 am · BigBlueButton"},
+ ins:{n:"Instituciones Financieras",s:"Inst. Financieras",p:"Dr. Jesús Arocha",v:"--c-ins",slot:"Lun · 7:00 pm · Zoom"},
+ log:{n:"Lógica Matemática",s:"Lógica",p:"Msc. Liban Haleguey",v:"--c-log",slot:"Jue · 9:30 am · Zoom"}
 };
-// Clases: [curso, fecha ISO, hora "HH:MM" o null, título, plataforma]
 const CL=[
- ["fin","2026-09-15",null,"Clase en vivo 1 · Unidad I","Hora por confirmar"],
- ["eco","2026-09-16","17:00","Clase en vivo 1","Enlace en el aula"],
- ["ins","2026-09-16","19:00","Clase en vivo 1","Zoom"],
- ["log","2026-09-17","09:30","Clase en vivo 1 · Proposiciones e inferencias","Zoom"],
- ["inv","2026-09-19","10:00","1ª clase en vivo · Bienvenida y plan","BigBlueButton"],
- ["inv","2026-09-21","10:00","1ª clase en vivo (otra sección)","BigBlueButton"],
- ["inv","2026-09-26","10:00","2ª clase en vivo","BigBlueButton"],
- ["ins","2026-09-28","19:00","Clase en vivo 2","Zoom"],
- ["eco","2026-09-30","17:00","Clase en vivo 2","Enlace en el aula"],
- ["log","2026-10-01","09:30","Clase en vivo 2","Zoom"],
- ["ins","2026-10-12","19:00","Clase en vivo 3","Zoom"],
- ["eco","2026-10-14","17:00","Clase en vivo 3","Enlace en el aula"],
- ["log","2026-10-15","09:30","Clase en vivo 3","Zoom"],
- ["fin","2026-10-19",null,"Clase en vivo 2 · Estados financieros e inflación","Hora por confirmar"],
- ["ins","2026-10-26","19:00","Clase en vivo 4","Zoom"],
- ["eco","2026-10-28","17:00","Clase en vivo 4","Enlace en el aula"],
- ["log","2026-10-29","09:30","Clase en vivo 4","Zoom"],
- ["fin","2026-11-02",null,"Clase en vivo 3 · Capital de trabajo","Hora por confirmar"],
- ["fin","2026-11-16",null,"Clase en vivo 4 · Flujo de efectivo","Hora por confirmar"]
+ ["fin","2026-09-15",null,"Clase en vivo 1"],["eco","2026-09-16","17:00","Clase en vivo 1"],["ins","2026-09-16","19:00","Clase en vivo 1"],
+ ["log","2026-09-17","09:30","Clase en vivo 1"],["inv","2026-09-19","10:00","1ª clase en vivo"],["inv","2026-09-21","10:00","1ª clase en vivo (otra sección)"],
+ ["inv","2026-09-26","10:00","2ª clase en vivo"],["ins","2026-09-28","19:00","Clase en vivo 2"],["eco","2026-09-30","17:00","Clase en vivo 2"],
+ ["log","2026-10-01","09:30","Clase en vivo 2"],["ins","2026-10-12","19:00","Clase en vivo 3"],["eco","2026-10-14","17:00","Clase en vivo 3"],
+ ["log","2026-10-15","09:30","Clase en vivo 3"],["fin","2026-10-19",null,"Clase en vivo 2 · Estados financieros e inflación"],
+ ["ins","2026-10-26","19:00","Clase en vivo 4"],["eco","2026-10-28","17:00","Clase en vivo 4"],["log","2026-10-29","09:30","Clase en vivo 4"],
+ ["fin","2026-11-02",null,"Clase en vivo 3 · Capital de trabajo"],["fin","2026-11-16",null,"Clase en vivo 4 · Flujo de efectivo"]
 ];
-// Evaluaciones por ventana
-const EV=[
- {w:"Ventana 1",from:"2026-10-05",to:"2026-10-11",items:[
-  ["eco","S1 · Informe técnico diagnóstico","05/10","09/10"],
-  ["fin","S1 · Video + ejercicios (estados financieros)","05/10","11/10"],
-  ["inv","S1 · Informe interpretativo","05/10","10/10"],
-  ["ins","S1 · Ensayo","05/10","10/10"],
-  ["log","S1 · Resolución de ejercicios","05/10","09/10"]]},
- {w:"Ventana 2",from:"2026-10-19",to:"2026-10-25",items:[
-  ["eco","S2 · Infografía digital argumentada","19/10","23/10"],
-  ["fin","S2 · Video + ejercicios (inflación)","19/10","25/10"],
-  ["inv","S2 · Análisis C.A.M.E.","19/10","24/10","Otra sección: Notas Cornell (Lcdo. Diego Rodríguez), cierra 23/10"],
-  ["ins","S2 · Estudio de caso","19/10","24/10"],
-  ["log","S2 · Ejercicios prácticos","19/10","23/10"]]},
- {w:"Ventana 3",from:"2026-11-02",to:"2026-11-08",items:[
-  ["eco","S3 · Plan de gestión ambiental","02/11","06/11"],
-  ["fin","S3 · Video + ejercicios (capital de trabajo)","02/11","08/11"],
-  ["inv","S3 · Creación de un blog (Blogger)","02/11","07/11"],
-  ["ins","S3 · Cuadro comparativo","02/11","07/11","Sección A: Exposición (Prof. María Daniela Carrillo)"],
-  ["log","S3 · Resolución de ejercicios","02/11","06/11"]]},
- {w:"Ventana 4",from:"2026-11-16",to:"2026-11-22",items:[
-  ["eco","S4 · Póster académico digital","16/11","20/11"],
-  ["fin","S4 · Video + ejercicios (flujo de efectivo)","16/11","22/11"],
-  ["inv","S4 · Revista digital","16/11","21/11"],
-  ["ins","S4 · Análisis argumentativo","16/11","21/11","Sección A: Organizadores gráficos (Prof. Carrillo)"],
-  ["log","S4 · Ejercicios prácticos","16/11","20/11"]]}
+const W=[
+ {n:1,from:"2026-10-05",to:"2026-10-11",items:[["eco","S1","Informe técnico diagnóstico","2026-10-09"],["log","S1","Resolución de ejercicios","2026-10-09"],["inv","S1","Informe interpretativo","2026-10-10"],["ins","S1","Ensayo","2026-10-10"],["fin","S1","Video y ejercicios: estados financieros","2026-10-11"]]},
+ {n:2,from:"2026-10-19",to:"2026-10-25",items:[["eco","S2","Infografía digital argumentada","2026-10-23"],["log","S2","Ejercicios prácticos","2026-10-23"],["inv","S2","Análisis C.A.M.E.","2026-10-24","Otra sección: Notas Cornell, cierra 23/10"],["ins","S2","Estudio de caso","2026-10-24"],["fin","S2","Video y ejercicios: inflación","2026-10-25"]]},
+ {n:3,from:"2026-11-02",to:"2026-11-08",items:[["eco","S3","Plan de gestión ambiental","2026-11-06"],["log","S3","Resolución de ejercicios","2026-11-06"],["inv","S3","Creación de un blog","2026-11-07"],["ins","S3","Cuadro comparativo","2026-11-07","Sección A: Exposición"],["fin","S3","Video y ejercicios: capital de trabajo","2026-11-08"]]},
+ {n:4,from:"2026-11-16",to:"2026-11-22",items:[["eco","S4","Póster académico digital","2026-11-20"],["log","S4","Ejercicios prácticos","2026-11-20"],["inv","S4","Revista digital","2026-11-21"],["ins","S4","Análisis argumentativo","2026-11-21","Sección A: Organizadores gráficos"],["fin","S4","Video y ejercicios: flujo de efectivo","2026-11-22"]]}
 ];
-const col=k=>`var(${C[k].v})`;
-const D=s=>new Date(s+"T00:00:00-04:00");
-const now=new Date();
-const today=D(new Intl.DateTimeFormat("en-CA",{timeZone:"America/Caracas"}).format(now));
-const dayMs=864e5;
-const fmt=d=>d.toLocaleDateString("es-VE",{weekday:"short",day:"2-digit",month:"short",timeZone:"America/Caracas"});
-const h12=t=>{if(!t)return"--:--";let[h,m]=t.split(":").map(Number);const s=h>=12?"pm":"am";h=h%12||12;return`${h}:${String(m).padStart(2,"0")} ${s}`};
+const EXTRA=[["intro","2026-10-14","23:59","Actualizar foto de perfil","Curso Introductorio · sin entregar"]];
 
-// Leyenda
-document.getElementById("legend").innerHTML=Object.entries(C).filter(([k])=>k!=="intro").map(([k,c])=>`<span class="chip" style="--c:${col(k)}"><span class="dot"></span>${c.n}</span>`).join("");
+const TZ="America/Caracas",DAY=864e5;
+const D=(s,t)=>new Date(`${s}T${t||"00:00"}:00-04:00`);
+const ymd=d=>new Intl.DateTimeFormat("en-CA",{timeZone:TZ}).format(d);
+const col=k=>k==="intro"?"var(--muted)":`var(${C[k].v})`;
+const now=new Date(), todayStr=ymd(now), today=D(todayStr);
+const fmtD=d=>d.toLocaleDateString("es-VE",{weekday:"short",day:"2-digit",month:"short",timeZone:TZ}).replace(/\./g,"");
+const h12=t=>{if(!t)return"hora por confirmar";let[h,m]=t.split(":").map(Number);const s=h>=12?"pm":"am";h=h%12||12;return`${h}:${String(m).padStart(2,"0")} ${s}`};
+const dd=d=>Math.round((D(ymd(d))-today)/DAY);
+const pill=(n,done)=>done?`<span class="pill p-past">realizado</span>`:n<=0?`<span class="pill p-alert">hoy</span>`:n===1?`<span class="pill p-alert">mañana</span>`:n<=3?`<span class="pill p-alert">en ${n} días</span>`:`<span class="pill p-ok">en ${n} días</span>`;
+const name=k=>k==="intro"?"Curso Introductorio":C[k].n;
 
-// Pendientes
-const days=d=>Math.round((d-today)/dayMs);
-const badge=n=>n<0?`<span class="badge b-past">pasada</span>`:n===0?`<span class="badge b-hot">hoy</span>`:n<=3?`<span class="badge b-hot">en ${n} día${n>1?"s":""}</span>`:`<span class="badge b-soon">en ${n} días</span>`;
-const nextCls=CL.filter(c=>D(c[1])>=today).slice(0,3);
-const pend=[
- ...nextCls.map(c=>({k:c[0],t:`${c[3]}`,m:`${C[c[0]].n} · ${fmt(D(c[1]))} · ${c[2]?h12(c[2]):"hora por confirmar"}`,n:days(D(c[1]))})),
- {k:"intro",t:"Actividad: Actualización del perfil (foto)",m:"Curso Introductorio · sin entregar · cierra mié 14/10, 11:59 pm",n:days(D("2026-10-14"))},
- {k:"eco",t:"Primera ventana de evaluaciones: 5 entregas",m:"Todas las materias · abre lun 05/10, 12:01 am",n:days(D("2026-10-05"))}
-];
-document.getElementById("pend").innerHTML=pend.map(p=>`<div class="pcard" style="--c:${col(p.k)}">${badge(p.n)}<div class="t">${p.t}</div><div class="m">${p.m}</div></div>`).join("");
+const EVS=[];
+CL.forEach(([k,d,t,x])=>EVS.push({k,kind:"Clase en vivo",date:D(d,t||"23:58"),day:d,t,title:x,sub:C[k].p}));
+W.forEach(w=>w.items.forEach(([k,s,x,d,alt])=>EVS.push({k,kind:"Cierre de evaluación",date:D(d,"23:59"),day:d,t:"23:59",title:`${s} · ${x}`,sub:`${C[k].p} · 25%${alt?" · "+alt:""}`,ev:true})));
+EXTRA.forEach(([k,d,t,x,s])=>EVS.push({k,kind:"Pendiente",date:D(d,t),day:d,t,title:x,sub:s,ev:true}));
+EVS.sort((a,b)=>a.date-b.date);
+const done=e=>e.date<now;
+const upcoming=EVS.filter(e=>!done(e));
+
+// KPIs
+const clsLeft=CL.filter(c=>D(c[1],c[2]||"23:58")>=now).length;
+const evLeft=W.flatMap(w=>w.items).filter(i=>D(i[3],"23:59")>=now).length;
+const curW=W.find(w=>today>=D(w.from)&&today<=D(w.to));
+const nextW=W.find(w=>D(w.from)>today);
+const k4=curW?["Ventana abierta",`<span class="num">${curW.n}</span>`,`cierra ${fmtD(D(curW.to))}`]
+ :nextW?["Próxima ventana",`<span class="num">${dd(D(nextW.from))}</span><span style="font-size:15px;font-weight:500"> días</span>`,`abre ${fmtD(D(nextW.from))}`]
+ :["Ventanas","—","lapso finalizado"];
+document.getElementById("kpis").innerHTML=[
+ ["Materias",`<span class="num">5</span>`,"inscritas este trimestre"],
+ ["Clases por ver",`<span class="num">${clsLeft}</span>`,`de ${CL.length} publicadas`],
+ ["Entregas pendientes",`<span class="num">${evLeft}</span>`,"de 20 · 25% cada una"],k4
+].map(([l,v,s])=>`<div class="kpi"><div class="l">${l}</div><div class="v">${v}</div><div class="s">${s}</div></div>`).join("");
+
+// Lo próximo
+if(upcoming.length){
+ const e=upcoming[0],d=D(e.day);
+ const mon=d.toLocaleDateString("es-VE",{month:"short",timeZone:TZ}).replace(".","");
+ const wd=d.toLocaleDateString("es-VE",{weekday:"short",timeZone:TZ}).replace(".","");
+ document.getElementById("next").innerHTML=`<div class="card next" style="--c:${col(e.k)}"><div class="date-tile"><div class="m">${mon}</div><div class="d num">${e.day.slice(8)}</div><div class="w">${wd}</div></div><div><div class="k">${e.kind}</div><div class="t">${name(e.k)} · ${e.title}</div><div class="m2">${h12(e.t)} · ${e.sub}</div></div>${pill(dd(e.date))}</div>`;
+ document.getElementById("queue").innerHTML=upcoming.slice(1,4).map(e=>`<div class="card q" style="--c:${col(e.k)}"><div class="h"><span class="k">${e.kind}</span>${pill(dd(e.date))}</div><div class="t">${name(e.k)}</div><div class="m2">${e.title}</div><div class="m2 num">${fmtD(e.date)} · ${h12(e.t)}</div></div>`).join("");
+}
+
+// Materias
+document.getElementById("subjects").innerHTML=Object.entries(C).map(([k,c])=>`<div class="card sub" style="--c:${col(k)}"><b>${c.n}</b><span>${c.p}</span><span class="slot">${c.slot}</span></div>`).join("");
 
 // Línea de tiempo
-let filter="all";
-const monday=d=>{const x=new Date(d);const wd=(x.getUTCDay()+6)%7;return new Date(x-wd*dayMs)};
+let F="all",SHOWPAST=false;
+const seg=document.getElementById("seg");
+seg.innerHTML=[["all","Todas"],...Object.entries(C).map(([k,c])=>[k,c.s])].map(([k,l])=>`<button type="button" data-k="${k}" aria-pressed="${k==="all"}">${l}</button>`).join("");
+seg.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;F=b.dataset.k;seg.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));renderTL()});
 function renderTL(){
-  const list=CL.filter(c=>filter==="all"||c[0]===filter);
-  const weeks=new Map();
-  list.forEach(c=>{const m=monday(D(c[1])).getTime();if(!weeks.has(m))weeks.set(m,[]);weeks.get(m).push(c)});
-  const start=monday(D("2026-09-14")).getTime(),end=monday(D("2026-11-16")).getTime();
-  let html="",n=1;
-  for(let w=start;w<=end;w+=7*dayMs,n++){
-    const items=weeks.get(w)||[];
-    const isNow=today>=w&&today<w+7*dayMs;
-    const endW=new Date(w+6*dayMs);
-    const evw=EV.find(e=>D(e.from).getTime()===w);
-    html+=`<div class="week${isNow?" now":""}"><div class="wk"><b>Semana ${n}${isNow?" · actual":""}</b>${fmt(new Date(w)).replace(/\.$/,"")} – ${fmt(endW)}</div><div class="items">`;
-    if(evw)html+=`<div class="empty" style="font-style:normal;color:var(--warn);font-weight:600">${evw.w} de evaluaciones abierta esta semana</div>`;
-    html+=items.length?items.map(c=>{const past=D(c[1])<today;return`<div class="cls${past?" past":""}" style="--c:${col(c[0])}"><div class="when">${fmt(D(c[1]))} · ${h12(c[2])}</div><div class="what"><b>${C[c[0]].n}</b><span>${c[3]} · ${C[c[0]].p} · ${c[4]}</span></div>${badge(days(D(c[1])))}</div>`}).join(""):(evw?"":`<div class="empty">Sin clases en vivo publicadas</div>`);
-    html+=`</div></div>`;
-  }
-  document.getElementById("timeline").innerHTML=html;
+ const list=EVS.filter(e=>e.k!=="intro"&&(F==="all"||e.k===F));
+ const start=D("2026-09-14").getTime(),end=D("2026-11-16").getTime();
+ let h="",n=1;
+ for(let w=start;w<=end;w+=7*DAY,n++){
+  if(!SHOWPAST&&w+7*DAY<=today.getTime())continue;
+  const items=list.filter(e=>{const t=D(e.day).getTime();return t>=w&&t<w+7*DAY});
+  const isNow=today.getTime()>=w&&today.getTime()<w+7*DAY;
+  const win=W.find(x=>D(x.from).getTime()===w);
+  h+=`<div class="wk${isNow?" now":""}"><div class="wk-l"><b>Semana ${n}</b><span class="num">${fmtD(new Date(w))} – ${fmtD(new Date(w+6*DAY))}</span>${isNow?`<div class="tag cur">Semana actual</div>`:""}${win?`<div class="tag">Ventana ${win.n} de evaluaciones</div>`:""}</div><div class="rows">`;
+  h+=items.length?items.map(e=>`<div class="row${e.ev?" ev":""}${done(e)?" past":""}" style="--c:${col(e.k)}"><div class="when">${fmtD(e.date)} · ${e.t?h12(e.t):"s/h"}</div><div class="what"><b>${e.ev?"Cierra · ":""}${C[e.k].n}</b><span>${e.title} · ${e.sub}</span></div>${pill(dd(e.date),done(e))}</div>`).join(""):`<div class="empty">Sin actividades programadas</div>`;
+  h+=`</div></div>`;
+ }
+ document.getElementById("timeline").innerHTML=h;
+ const past=Math.max(0,Math.floor((today.getTime()-start)/(7*DAY)));
+ const mb=document.getElementById("more");mb.hidden=past===0;mb.textContent=SHOWPAST?"Ocultar semanas anteriores":`Mostrar ${past} semana${past>1?"s":""} anterior${past>1?"es":""}`;
 }
-const tabs=document.getElementById("tabs");
-tabs.innerHTML=[["all","Todas"],...Object.entries(C).filter(([k])=>k!=="intro").map(([k,c])=>[k,c.n])].map(([k,l])=>`<button type="button" data-k="${k}" aria-pressed="${k==="all"}">${l}</button>`).join("");
-tabs.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;filter=b.dataset.k;tabs.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));renderTL()});
+document.getElementById("more").addEventListener("click",()=>{SHOWPAST=!SHOWPAST;renderTL()});
 renderTL();
 
-// Calendario de evaluaciones
-const g=document.getElementById("gantt");
-const isNowW=e=>today>=D(e.from)&&today<=D(e.to);
-let th=`<tr><th>Materia</th>${EV.map(e=>`<th class="${isNowW(e)?"now":""}">${e.w}<br>${e.from.slice(8)}/${e.from.slice(5,7)} – ${e.to.slice(8)}/${e.to.slice(5,7)}</th>`).join("")}</tr>`;
-const rows=["eco","fin","inv","ins","log"].map(k=>`<tr><td class="course" style="--c:${col(k)}"><span class="chip"><span class="dot"></span>${C[k].n}</span></td>${EV.map(e=>{const it=e.items.filter(i=>i[0]===k);return`<td>${it.map(i=>`<div class="ev" style="--c:${col(k)}"><span class="n">${i[1]}</span><span class="d">Abre ${i[2]} 12:01 am · Cierra ${i[3]} 11:59 pm</span>${i[4]?`<span class="alt">${i[4]}</span>`:""}</div>`).join("")}</td>`}).join("")}</tr>`).join("");
-g.innerHTML=`<thead>${th}</thead><tbody>${rows}</tbody>`;
+// Ventanas de evaluación
+document.getElementById("windows").innerHTML=W.map(w=>{
+ const isNow=today>=D(w.from)&&today<=D(w.to),f=D(w.from);
+ const st=isNow?"Ventana abierta ahora":D(w.to,"23:59")<now?"Ventana cerrada":`Abre en ${dd(f)} días`;
+ return `<div class="card win${isNow?" now":""}"><div class="win-h"><b>Ventana ${w.n}</b><span>${fmtD(f)} – ${fmtD(D(w.to))}</span></div><ul>${w.items.map(([k,s,x,d,alt])=>`<li style="--c:${col(k)}"><span class="s">${C[k].s} · ${s}</span><span class="n">${x}</span><span class="c">Cierra ${fmtD(D(d))} · 11:59 pm</span>${alt?`<span class="a">${alt}</span>`:""}</li>`).join("")}</ul><div class="ft">${st}</div></div>`;
+}).join("");
 </script>
-
 </body>
 </html>
